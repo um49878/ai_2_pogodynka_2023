@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nowa prognoza{% endblock %}
+
+{% block body %}
+    <h1>Dodaj prognozę</h1>
+
+    {{ include('forecast/_form.html.twig') }}
+
+    <a href="{{ path('app_forecast_index') }}" class="btn btn-light">Powrót</a>
+{% endblock %}

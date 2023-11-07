@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Location index{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_forecast_index') }}">Prognozy => </a>
+
+    <h1>Lokacje</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Miasto</th>
+                <th>Kraj</th>
+                <th>Długość</th>
+                <th>Szerokość</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td>{{ location.id }}</td>
+                <td>{{ location.city }}</td>
+                <td>{{ location.country }}</td>
+                <td>{{ location.longitude }}</td>
+                <td>{{ location.latitude }}</td>
+                <td>
+                    <a href="{{ path('app_location_show', {'id': location.id}) }}" class="btn btn-light">wyświetl</a>
+                    <a href="{{ path('app_location_edit', {'id': location.id}) }}" class="btn btn-light">edytuj</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">nie znaleziono rekordów</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_location_new') }}">Dodaj lokację</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista prognoz{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_location_index') }}">Lokacje => </a>
+
+    <h1>Lista prognoz</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Data</th>
+                <th>Temperatura</th>
+                <th>Kierunek wiatru</th>
+                <th>Prędkość wiatru</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for forecast in forecasts %}
+            <tr>
+                <td>{{ forecast.id }}</td>
+                <td>{{ forecast.date ? forecast.date|date('Y-m-d') : '' }}</td>
+                <td>{{ forecast.temperature }}</td>
+                <td>{{ forecast.windDirection }}</td>
+                <td>{{ forecast.windSpeed }}</td>
+                <td>
+                    <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}" class="btn btn-light">Wyświetl</a>
+                    <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}" class="btn btn-light">Edytuj</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Brak rekordów do wyświetlenia</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_forecast_new') }}" class="btn btn-light">Nowy</a>
+{% endblock %}

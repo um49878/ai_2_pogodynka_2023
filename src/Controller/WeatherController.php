@@ -22,4 +22,7 @@ class WeatherController extends AbstractController
             'forecasts' => $forecasts,
         ]);
     }
+
+
+
 }

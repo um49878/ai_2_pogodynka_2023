@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edycja lokacji{% endblock %}
+
+{% block body %}
+    <h1>Edycja Lokacji </h1>
+
+    {{ include('location/_form.html.twig', {'button_label': 'Zapisz'}) }}
+
+    <a href="{{ path('app_location_index') }}" class="btn btn-light">Powrót</a>
+
+    {{ include('location/_delete_form.html.twig') }}
+{% endblock %}
