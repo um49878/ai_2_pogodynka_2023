@@ -1,13 +1,48 @@
 framework:
     validation:
-        email_validation_mode: html5
-
-        # Enables validator auto-mapping support.
-        # For instance, basic validation constraints will be inferred from Doctrine's metadata.
-        #auto_mapping:
-        #    App\Entity\: []
-
-when@test:
-    framework:
-        validation:
-            not_compromised_password: false
+        enabled: true
+#        mapping:
+#            paths:
+##                 '%kernel.project_dir%/src/Entity'
+#
+#App\Entity\Forecast:
+#    properties:
+#        temperature:
+#            - NotBlank:
+#                  groups: ['create', 'edit']
+#            - Type: numeric
+#            - Type:
+#                  type: numeric
+#                  message: "Pole temperature powinno być liczbą"
+#                  groups: ['create', 'edit']
+#        wind_speed:
+#            - NotBlank:
+#                  groups: ['create', 'edit']
+#            - Type: numeric
+#            - GreaterThan:
+#                  value: 0
+#                  message: "Wartość wind_speed musi być większa od zera"
+#                  groups: ['create', 'edit']
+#
+#App\Entity\Location:
+#    properties:
+#        latitude:
+#            - NotBlank:
+#                groups: ['create', 'edit']
+#            - Type: numeric
+#            - Range:
+#                  min: -180
+#                  max: 180
+#                  minMessage: "Wartość pola latitude powinna być większa lub równa -180"
+#                  maxMessage: "Wartość pola latitude powinna być mniejsza lub równa 180"
+#                  groups: ['create', 'edit']
+#        longitude:
+#            - NotBlank:
+#                  groups: ['create', 'edit']
+#            - Type: numeric
+#            - Range:
+#                  min: -90
+#                  max: 90
+#                  minMessage: "Wartość pola longitude powinna być większa lub równa -90"
+#                  maxMessage: "Wartość pola longitude powinna być mniejsza lub równa 90"
+#                  groups: ['create', 'edit']
