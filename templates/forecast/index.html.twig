@@ -26,8 +26,12 @@
                 <td>{{ forecast.windDirection }}</td>
                 <td>{{ forecast.windSpeed }}</td>
                 <td>
-                    <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}" class="btn btn-light">Wyświetl</a>
-                    <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}" class="btn btn-light">Edytuj</a>
+                    {%if is_granted('ROLE_FORECAST_SHOW')  %}
+                        <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}" class="btn btn-light">Wyświetl</a>
+                    {% endif %}
+                    {%if is_granted('ROLE_FORECAST_EDIT')  %}
+                        <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}" class="btn btn-light">Edytuj</a>
+                    {%endif %}
                 </td>
             </tr>
         {% else %}
@@ -38,5 +42,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_forecast_new') }}" class="btn btn-light">Nowy</a>
+    {%if is_granted('ROLE_FORECAST_NEW')  %}
+        <a href="{{ path('app_forecast_new') }}" class="btn btn-light">Nowy</a>
+    {% endif %}
 {% endblock %}
