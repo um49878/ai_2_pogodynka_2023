@@ -1,0 +1,6 @@
+{{ "city;country;date;temperature;fahrenheit;wind_direction;wind_speed <br>"|raw }}
+{% for forecast in forecasts %}
+    {{ location.city }};{{ location.country }};{{ forecast.date|date('Y-m-d') }};{{ forecast.temperature }};
+    {{ forecast.fahrenheit }};{{ forecast.winddirection }};{{ forecast.windspeed }}{{ "<br>" }}
+{% endfor %}
+

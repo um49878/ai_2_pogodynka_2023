@@ -31,7 +31,10 @@ class Forecast
     private ?string $wind_speed = null;
 
 
-
+    public function getFahrenheit()
+    {
+        return ($this->temperature * (9/5))+32;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -73,7 +76,7 @@ class Forecast
         return $this;
     }
 
-    public function getTemperature(): ?string
+    public function getTemperature()
     {
         return $this->temperature;
     }

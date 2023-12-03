@@ -1,0 +1,19 @@
+{% set formattedForecasts = [] %}
+
+{% for forecast in forecasts %}
+    {% set formattedForecast = {
+        'temperature': forecast.temperature,
+        'fahrenheit': forecast.fahrenheit,
+        'wind_direction': forecast.winddirection,
+        'wind_speed': forecast.windspeed
+    } %}
+    {% set formattedForecasts = formattedForecasts|merge([formattedForecast]) %}
+{% endfor %}
+
+{% set data ={
+    'city': location.city,
+    'country': location.country,
+    'forecasts' : formattedForecasts
+} %}
+
+{{ data|json_encode(constant('JSON_PRETTY_PRINT'))}}
